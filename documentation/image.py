@@ -15,15 +15,17 @@ import sys
 import argparse
 
 # Constants, these are the main "settings" for the image
-WIDTH, HEIGHT, MARGIN, FRAMES = 2048, 2048, 128, 1
+WIDTH, HEIGHT, MARGIN, MARGIN2, FRAMES = 2048, 768, 128, 9, 1
 FONT_PATH = "fonts/ttf/BaeminHanna11yearsold-Regular.ttf"
 FONT_LICENSE = "OFL v1.1"
 AUXILIARY_FONT = "Helvetica"
 AUXILIARY_FONT_SIZE = 48
-BIG_TEXT = "Aa"
-BIG_TEXT_FONT_SIZE = 1024
-BIG_TEXT_SIDE_MARGIN = MARGIN * 3.1
-BIG_TEXT_BOTTOM_MARGIN = MARGIN * 5.5
+BIG_TEXT = """편리한 배달의민족으로 음식을 시켜보면 민첩함이 느껴집니다."""
+BIG_TEXT2 = """Quickly enjoy Baemin’s food delivery service, zestfully devouring every bite."""
+BIG_TEXT_FONT_SIZE = 72
+BIG_TEXT2_FONT_SIZE = 50
+BIG_TEXT_SIDE_MARGIN = MARGIN * 3.1 * 0.703
+BIG_TEXT_BOTTOM_MARGIN = MARGIN * 55
 GRID_VIEW = False # Change this to "True" for a grid overlay
 
 # Handel the "--output" flag
@@ -91,8 +93,10 @@ def draw_main_text():
     # Adjust this line to center main text manually.
     # TODO: This should be done automatically when drawbot-skia
     # has support for textBox() and FormattedString
-    #text(BIG_TEXT, ((WIDTH / 2) - MARGIN * 4.75, (HEIGHT / 2) - MARGIN * 2.5))
-    text(BIG_TEXT, (BIG_TEXT_SIDE_MARGIN, BIG_TEXT_BOTTOM_MARGIN))
+    text(BIG_TEXT, ((WIDTH / 2) - MARGIN2 * 98, (HEIGHT / 2) + MARGIN2 * 1.5))
+    fontSize(BIG_TEXT2_FONT_SIZE)
+    text(BIG_TEXT2, ((WIDTH / 2) - MARGIN2 * 98, (HEIGHT / 2) - MARGIN2 * 7.5))
+    # text(BIG_TEXT, (BIG_TEXT_SIDE_MARGIN, BIG_TEXT_BOTTOM_MARGIN))
 
 
 # Divider lines
@@ -114,7 +118,7 @@ def draw_auxiliary_text():
     POS_TOP_RIGHT = (WIDTH - MARGIN, HEIGHT - MARGIN * 1.5)
     POS_BOTTOM_LEFT = (MARGIN, MARGIN)
     POS_BOTTOM_RIGHT = (WIDTH - MARGIN * 0.95, MARGIN)
-    URL_AND_HASH = MY_URL + "at commit " + MY_HASH
+    URL_AND_HASH = "Commit " + MY_HASH
     URL_AND_HASH = URL_AND_HASH.replace("\n", " ")
     # Draw Text
     text(FONT_NAME, POS_TOP_LEFT, align="left")
